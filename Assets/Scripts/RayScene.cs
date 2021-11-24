@@ -36,7 +36,7 @@ public class RayScene : MonoBehaviour
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        //Debug.DrawRay(ray.origin,ray.direction*100, Color.cyan);
         RaycastHit hit;
 
         if (isWorking == true)
@@ -63,7 +63,6 @@ public class RayScene : MonoBehaviour
             if (Physics.Raycast(ray, out hit) == true)
             {
                 var selection = hit.transform;
-                Debug.Log("El rayo toca con:" + hit.transform.gameObject.tag);
                 if (selection.CompareTag("Cube1") || selection.CompareTag("Sphere") || selection.CompareTag("Cube2"))
                 {
                     if (selection.CompareTag("Cube1"))
@@ -88,7 +87,7 @@ public class RayScene : MonoBehaviour
     
     IEnumerator Count()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5);
         if (option == 1)
         {
             SceneManager.LoadScene("Scene1 1");
@@ -101,7 +100,6 @@ public class RayScene : MonoBehaviour
         {
             SceneManager.LoadScene("Scene1 3");
         }
-
     }
 }
 
